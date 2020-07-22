@@ -1,0 +1,35 @@
+#sun {
+   position: absolute;
+   top: 20%;
+   left: 83%;
+   z-index: -1;
+   width: 170px;
+   height: 170px;
+   border-radius: 100%;
+   background: #f5c91a;
+   box-shadow: 0 0 200px #f5c91a;
+   transform: translate(-50%, -50%);
+   background: -webkit-radial-gradient(#f9d71c, #FDB813);
+   background: -moz-radial-gradient (#f9d71c, #FDB813);
+   background: -o-radial-gradient(#f9d71c, #FDB813);
+   background: radial-gradient(#f9d71c, #FDB813);
+
+   animation-name: roll;
+   animation-duration: 10s;
+   animation-timing-function: ease-in-out;
+   animation-iteration-count: infinite;
+   animation-direction: alternate;
+   // animation-delay: 0s;
+}
+
+@keyframes roll {
+   0% {
+      transform: translateX(10px) rotate(0);
+   }
+   50% {
+      transform: translateX(-10px) rotate(-0.5turn);
+   }
+   100% {
+      transform: translateX(10px) rotate(2turn);
+   }
+}
