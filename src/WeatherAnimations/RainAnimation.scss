@@ -1,12 +1,12 @@
 .rain {
-   background: white;
-   background: linear-gradient(to bottom, rgba(255,255,255,0) 0%, #ffffff 100%);
+   width: 3px;
    height: 50px;
+   background: white;
    position: absolute;
-   width: 2px;
+   background: linear-gradient(to bottom, rgba(255,255,255,0) 0%, #ffffff 100%);
 }
 
-$rain: 150;
+$rain: 40;
  
 @for $i from 1 through $rain {
    $top: (random(50) + 50) * 1%;
@@ -24,7 +24,7 @@ $rain: 150;
       top: -$top;
    }
  
-   @Keyframes rain-#{$i} {
+   @keyframes rain-#{$i} {
       0% {
          left: $left;
          opacity: $opacity;

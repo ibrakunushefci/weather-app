@@ -1,32 +1,33 @@
 import React from 'react';
-import '../WeatherApp/Weather';
 
 const WeatherCard = ({items}) => {
+   const condition = items.current.condition.text;
+
    const convert = dateRange =>
    dateRange.split()
       .map(date => new Intl.DateTimeFormat('en-GB').format(new Date(date)))
       .join()
-
+   
    return (
       <>
-         {/* It shows rain, clouds, sun animations based on the weather condition */}
-         {items.current.condition.text === "Sunny"
+         {/* It shows rain, cloud, sun animations based on the weather condition */}
+         {condition === "Sunny"
             ? <div id="sun"></div>
             : null
          }
 
-         {items.current.condition.text === "Patchy rain possible" || items.current.condition.text === "Light rain" || items.current.condition.text === "Moderate rain"
-            ? [...new Array(150).keys()].map(i => <i key={i} className="rain"></i>)
+         {condition === "Patchy rain possible" || condition === "Patchy light rain with thunder" || condition === "Patchy light drizzle" || condition === "Blizzard" || condition === "Light drizzle" || condition === "Patchy light rain" || condition === "Light rain" || condition === "Moderate rain at times" || condition === "Moderate rain" || condition === "Heavy rain at times" || condition === "Heavy rain" || condition === "Light freezing rain" || condition === "Moderate or heavy freezing rain" || condition === "Light sleet" || condition === "Light rain shower" || condition === "Moderate or heavy rain shower" || condition === "Torrential rain shower" || condition === "Light sleet showers" || condition === "Moderate or heavy sleet showers" || condition === "Mist"
+            ? [...new Array(40).keys()].map(i => <i key={i} className="rain"></i>)
             : null
          }
 
-         {items.current.condition.text === "Partly cloudy" || items.current.condition.text === "Overcast" || items.current.condition.text === "Cloudy" 
+         {condition === "Partly cloudy" || condition === "Cloudy" || condition === "Clear" || condition === "Overcast" 
             ? <div id="background-wrap"><div className="x1"><div className="cloud"></div></div><div className="x2"><div className="cloud"></div></div><div className="x3"><div className="cloud"></div></div><div className="x4"><div className="cloud"></div></div></div>
             : null
          }
          
-         {/* Main Weather Card */}
-         <div className="container">
+         {/* Weather Card */}
+         <div className="container" data-aos='fade-up'>
             <div className="weather-side">
                <div className="weather-gradient"></div>
                <div className="date-container">

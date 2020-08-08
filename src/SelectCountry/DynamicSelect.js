@@ -1,55 +1,28 @@
-import React, {Component} from 'react';
-import { v4 as uuidv4 } from 'uuid';
-import InputLabel from '@material-ui/core/InputLabel';
-import MenuItem from '@material-ui/core/MenuItem';
-import FormControl from '@material-ui/core/FormControl';
-import Select from '@material-ui/core/Select';
-import PropTypes from 'prop-types';
-import { withStyles } from '@material-ui/styles';
-
-const styles = () => ({
-   root: {
-     color: 'white',
-     width: '180px'
-   },
-});
+import React, { Component } from 'react';
+import { Form } from 'react-bootstrap';
 
 class DynamicSelect extends Component {
-   handleChange = (event) => {
-      let selectedValue = event.target.value;
+   handleChange = (e) => {
+      const selectedValue = e.target.value;
       this.props.onChange(selectedValue);
    }
 
    render() {
-      const { classes } = this.props;
-      
-      let arrayOfData = this.props.arrayOfData;
-
-      let options = arrayOfData.map((data) =>
-         <MenuItem key={uuidv4()} value={data.name}>
+      const arrayOfData = this.props.arrayOfData;
+      const options = arrayOfData.map((data) =>
+         <option value={data.name} key={data.id}>
             {data.name}
-         </MenuItem>
+         </option>
       );
 
       return (
-         <FormControl className={classes.root}>
-            <InputLabel id={uuidv4()} className={classes.root}>Select country</InputLabel>
-            <Select onChange={this.handleChange} className={classes.root}>
+         <Form.Group controlId="formBasicRangeCustom">
+            <Form.Control onChange={this.handleChange} as="select" size="sm">
                {options}
-            </Select>
-            {/* <select>
-               <option>Option 1</option>
-               <option>Option 2</option>
-               <option>Option 3</option>
-               <option>Option 4</option>
-            </select> */}
-         </FormControl>
+            </Form.Control>
+         </Form.Group>
       )
    }
 }
 
-DynamicSelect.propTypes = {
-   classes: PropTypes.object.isRequired,
-};
-
-export default withStyles(styles)(DynamicSelect);
+export default DynamicSelect;
