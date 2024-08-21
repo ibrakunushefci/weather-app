@@ -38,7 +38,7 @@ class App extends React.Component {
    loadHandleChange = () => {
       const checkUrl = !this.state.selectedValue ? "Albania" : this.state.selectedValue
 //       const newRequest = `https://cors-anywhere.herokuapp.com/http://api.weatherapi.com/v1/forecast.json?key=ca021cd2c43544e0be7112719202206&q=${checkUrl}&days=3`
-      const newRequest = `http://api.weatherapi.com/v1/forecast.json?key=ca021cd2c43544e0be7112719202206&q=${checkUrl}&days=3`
+      const newRequest = `https://api.weatherapi.com/v1/forecast.json?key=ca021cd2c43544e0be7112719202206&q=${checkUrl}&days=3`
       fetch(newRequest)
          .then(res => res.json())
          .then(
